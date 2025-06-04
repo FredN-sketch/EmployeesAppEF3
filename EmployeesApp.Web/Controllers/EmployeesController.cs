@@ -27,7 +27,8 @@ public class EmployeesController(IEmployeeService service, ICompanyService compa
             })]
         };
         int? i = model.First().CompanyId;
-        companyService.DeleteAsync(i ?? 0);
+      //  companyService.DeleteAsync(i ?? 0);
+        await companyService.DeleteAsync(1);
         return View(viewModel);
     }
 
