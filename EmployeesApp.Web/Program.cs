@@ -6,7 +6,7 @@ using EmployeesApp.Web.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeesApp.Web;
-
+//comment
 public class Program
 {
     public static void Main(string[] args)
