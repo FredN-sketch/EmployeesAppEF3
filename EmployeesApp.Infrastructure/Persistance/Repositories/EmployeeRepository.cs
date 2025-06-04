@@ -19,5 +19,11 @@ namespace EmployeesApp.Infrastructure.Persistance.Repositories
 
         public async Task<Employee?> GetByIdAsync(int id) => await context.Employees
             .FindAsync(id);
+
+        public void DeleteEmployeesFromCompanyAsync(int companyId)
+        {
+            var employees = context.Employees.Where(x => x.CompanyId == companyId);
+            context.RemoveRange(employees); // RemoveRange || Remove?
+        }
     }
 }

@@ -23,5 +23,11 @@ namespace EmployeesApp.Infrastructure.Persistance.Repositories
 
         public async Task<Company?> GetByIdAsync(int id) => await context.Companies
             .FindAsync(id);
+
+        public async Task DeleteAsync(int id)
+        {
+            var company = await context.Companies.FindAsync(id);
+            await Task.Run(() => context.Companies.Remove(company));
+        }
     }
 }

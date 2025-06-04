@@ -7,5 +7,6 @@ namespace EmployeesApp.Infrastructure.Persistance.Repositories
         Task AddAsync(Company company);
         Task<Company[]> GetAllAsync();
         Task<Company?> GetByIdAsync(int id);
+        Task DeleteAsync(int id);
     }
 }
