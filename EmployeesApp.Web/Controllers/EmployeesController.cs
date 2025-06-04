@@ -27,7 +27,7 @@ public class EmployeesController(IEmployeeService service, ICompanyService compa
             })]
         };
         int? i = model.First().CompanyId;
-        //companyService. // TODO: Remove this line
+        companyService.DeleteAsync(i ?? 0);
         return View(viewModel);
     }
 

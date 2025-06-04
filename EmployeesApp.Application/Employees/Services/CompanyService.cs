@@ -10,5 +10,6 @@ public class CompanyService(IUnitOfWork unitOfWork) : ICompanyService
 
         // delete company
         await unitOfWork.Companies.DeleteAsync(id);
+        await unitOfWork.PersistAsync(); // Don't forget to save changes
     }
 }
