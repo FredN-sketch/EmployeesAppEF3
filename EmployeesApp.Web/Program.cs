@@ -2,6 +2,7 @@
 using EmployeesApp.Application.Employees.Interfaces;
 using EmployeesApp.Application.Employees.Services;
 using EmployeesApp.Infrastructure.Persistance.Repositories;
+using EmployeesApp.Infrastructure;
 using EmployeesApp.Web.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,9 @@ public class Program
         builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         builder.Services.AddScoped<IEmployeeService, EmployeeService>();
         builder.Services.AddScoped<MyLogServiceFilterAttribute>();
+        builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+        builder.Services.AddScoped<ICompanyService, CompanyService>();
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         // Hämta connection-strängen från AppSettings.json​
         var connString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -25,9 +29,10 @@ public class Program
         builder.Services.AddDbContext<ApplicationContext>(o => o.UseSqlServer(connString));
 
         var app = builder.Build();
-
+        
         app.MapControllers();
         app.Run();
+        
         //testing 123
     }
 }

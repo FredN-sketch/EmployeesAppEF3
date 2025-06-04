@@ -1,4 +1,5 @@
 ﻿using EmployeesApp.Application.Employees.Interfaces;
+using EmployeesApp.Application.Employees.Services;
 using EmployeesApp.Domain.Entities;
 using EmployeesApp.Web.Models;
 using EmployeesApp.Web.Views.Employees;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeesApp.Web.Controllers;
 
-public class EmployeesController(IEmployeeService service) : Controller
+public class EmployeesController(IEmployeeService service, ICompanyService companyService) : Controller
 {
     [HttpGet("")]
     // [ActionName("Foo")]
@@ -25,7 +26,8 @@ public class EmployeesController(IEmployeeService service) : Controller
                 ShowAsHighlighted = service.CheckIsVIP(e),
             })]
         };
-
+        int? i = model.First().CompanyId;
+        //companyService. // TODO: Remove this line
         return View(viewModel);
     }
 
