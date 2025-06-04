@@ -6,9 +6,9 @@ public class CompanyService(IUnitOfWork unitOfWork) : ICompanyService
     public async Task DeleteAsync(int id)
     {
         // delete all employees first
-        unitOfWork.Employees.DeleteEmployeesFromCompanyAsync(id);
+        await unitOfWork.Employees.DeleteEmployeesFromCompanyAsync(id);
 
         // delete company
-        unitOfWork.Companies.DeleteAsync(id);
+        await unitOfWork.Companies.DeleteAsync(id);
     }
 }
